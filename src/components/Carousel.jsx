@@ -4,6 +4,16 @@ function Carousel({ items }) {
   const limitedItems = items.slice(0, 5);
   console.log(limitedItems);
 
+  const [showModal, setshowModal] = useState(false);
+
+  const handleModalOpen = () => {
+    setshowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setshowModal(false);
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -43,7 +53,12 @@ function Carousel({ items }) {
                       <p className="text-white bg-dark text-truncate">
                         {item.synopsis}
                       </p>
-                      <button className="btn btn-dark">Learn More...</button>
+                      <button
+                        className="btn btn-dark"
+                        onClick={handleModalOpen}
+                      >
+                        Learn More...
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -76,6 +91,7 @@ function Carousel({ items }) {
           </div>
         </div>
       </div>
+      {/* Modal */}
     </>
   );
 }
