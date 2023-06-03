@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Carousel from "./components/Carousel";
+import PopularList from "./components/PopularList";
 
 function App() {
   const { isLoading, isError, data, error, refetch } = useQuery(
@@ -31,6 +32,7 @@ function App() {
       ) : (
         <div>{isError ? <h1>{error}</h1> : <Carousel items={anime} />}</div>
       )}
+      <PopularList />
     </>
   );
 }

@@ -4,7 +4,7 @@ function Header() {
       <nav className="navbar bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand text-white">Anime Hub</a>
-          <form className="d-flex" role="search">
+          <form className="d-flex input-group" role="search">
             <input
               className="form-control me-2"
               type="search"
