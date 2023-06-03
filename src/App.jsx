@@ -29,15 +29,7 @@ function App() {
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <div>
-          {isError ? (
-            <h1>{error}</h1>
-          ) : (
-            <>
-              <Carousel items={anime} />
-            </>
-          )}
-        </div>
+        <div>{isError ? <h1>{error}</h1> : <Carousel items={anime} />}</div>
       )}
     </>
   );
