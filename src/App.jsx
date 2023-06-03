@@ -9,7 +9,7 @@ function App() {
     ["data"],
     async () => {
       const { data } = await axios(
-        `https://api.jikan.moe/v4/anime?q=Overlord&sfw`
+        `https://api.jikan.moe/v4/recommendations/anime`
       );
       console.log(data);
       return data;
@@ -19,7 +19,7 @@ function App() {
     }
   );
 
-  const anime = data?.data?.[0];
+  const anime = data?.data;
 
   return (
     <>
@@ -46,11 +46,7 @@ function App() {
             <h1>{error}</h1>
           ) : (
             <>
-              <Carousel
-                image={anime.images.jpg.large_image_url}
-                title={anime.titles[0].title}
-                plot={anime.synopsis}
-              />
+              <Carousel items={anime} />
             </>
           )}
         </div>
