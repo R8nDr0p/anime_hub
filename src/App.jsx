@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Header from "./components/Header";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import Carousel from "./components/Carousel";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { isLoading, isError, data, error, refetch } = useQuery(
+    ["data"],
+    async () => {
+      const { data } = await axios(
+        `https://api.jikan.moe/v4/anime?q=Overlord&sfw`
+      );
+      console.log(data);
+      return data;
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const anime = data?.data?.[0];
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* header */}
+      <Header />
+      {/* Carousel */}
+      {/* {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          {isError ? (
+            <h1>{error}</h1>
+          ) : (
+            <>
+              <h1>{anime.titles[0].title}</h1>
+              <img src={anime.images.jpg.image_url} alt="" />
+            </>
+          )} */}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          {isError ? (
+            <h1>{error}</h1>
+          ) : (
+            <>
+              <Carousel
+                image={anime.images.jpg.large_image_url}
+                title={anime.titles[0].title}
+                plot={anime.synopsis}
+              />
+            </>
+          )}
+        </div>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
