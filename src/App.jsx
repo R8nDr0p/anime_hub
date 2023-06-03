@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Carousel from "./components/Carousel";
 import PopularList from "./components/PopularList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const { isLoading, isError, data, error, refetch } = useQuery(
@@ -18,7 +19,7 @@ function App() {
     }
   );
 
-  const anime = data?.data;
+  const popularAnime = data?.data;
 
   return (
     <>
@@ -30,9 +31,11 @@ function App() {
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <div>{isError ? <h1>{error}</h1> : <Carousel items={anime} />}</div>
+        <div>
+          {isError ? <h1>{error}</h1> : <Carousel items={popularAnime} />}
+        </div>
       )}
-      <PopularList />
+      <PopularList item={popularAnime} />
     </>
   );
 }
