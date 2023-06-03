@@ -18,7 +18,11 @@ function Card({ item }) {
           <div className="card-body">
             <h5 className="card-title">{item.title}</h5>
             <p className="card-text text-truncate">{item.synopsis}</p>
-            <a href="#" className="btn btn-primary">
+            <a
+              href="#"
+              className="btn"
+              style={{ backgroundColor: "darkslateblue", color: "white" }}
+            >
               Learn more...
             </a>
           </div>
