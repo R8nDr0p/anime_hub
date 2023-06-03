@@ -1,8 +1,8 @@
 function Carousel({ items }) {
-  console.log(items);
+  // console.log(items);
 
   const limitedItems = items.slice(0, 3);
-  console.log(limitedItems);
+  // console.log(limitedItems);
 
   return (
     <>
