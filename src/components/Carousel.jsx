@@ -4,16 +4,6 @@ function Carousel({ items }) {
   const limitedItems = items.slice(0, 5);
   console.log(limitedItems);
 
-  const [showModal, setshowModal] = useState(false);
-
-  const handleModalOpen = () => {
-    setshowModal(true);
-  };
-
-  const handleModalClose = () => {
-    setshowModal(false);
-  };
-
   return (
     <>
       <div className="container-fluid">
@@ -53,12 +43,65 @@ function Carousel({ items }) {
                       <p className="text-white bg-dark text-truncate">
                         {item.synopsis}
                       </p>
+                      {/*Button trigger modal*/}
                       <button
+                        type="button"
                         className="btn btn-dark"
-                        onClick={handleModalOpen}
+                        data-bs-toggle="modal"
+                        data-bs-target={`#exampleModal${index + 1}`}
                       >
-                        Learn More...
+                        View Info
                       </button>
+
+                      {/*Modal*/}
+                      <div
+                        className="modal fade"
+                        id={`exampleModal${index + 1}`}
+                        tabIndex="-1"
+                        aria-labelledby={`#exampleModalLabel${index + 1}`}
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog modal-dialog-scrollable modal-lg">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h1
+                                className="modal-title fs-5 text-black"
+                                id={`exampleModalLabel${index + 1}`}
+                              >
+                                {item.title}
+                              </h1>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            {/* MODAL BODY */}
+                            <div className="modal-body">
+                              <div>
+                                <iframe
+                                  height={"250em"}
+                                  className="w-100"
+                                  src={`https://www.youtube.com/embed/${item.trailer.youtube_id}`}
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                  allowFullScreen
+                                ></iframe>
+                              </div>
+                              <p className="text-black">{item.synopsis}</p>
+                            </div>
+                            <div className="modal-footer">
+                              <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -91,7 +134,6 @@ function Carousel({ items }) {
           </div>
         </div>
       </div>
-      {/* Modal */}
     </>
   );
 }

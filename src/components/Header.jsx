@@ -1,9 +1,9 @@
 function Header() {
   return (
     <>
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand">Anime Hub</a>
+          <a className="navbar-brand text-white">Anime Hub</a>
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
@@ -11,7 +11,10 @@ function Header() {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button
+              className="btn btn-outline-primary text-white"
+              type="submit"
+            >
               Search
             </button>
           </form>
