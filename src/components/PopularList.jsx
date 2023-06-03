@@ -7,6 +7,9 @@ function PopularList() {
             <h1>Popular</h1>
           </div>
         </div>
+        <div className="row">
+          <div className="col"></div>
+        </div>
       </div>
     </>
   );
