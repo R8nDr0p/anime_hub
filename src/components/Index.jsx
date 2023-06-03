@@ -1,4 +1,3 @@
-import { Carousel } from "bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function Index() {
@@ -6,7 +5,7 @@ function Index() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={Carousel} />
+          <Route />
         </Routes>
       </BrowserRouter>
     </>
