@@ -32,16 +32,16 @@ function Carousel({ items }) {
                     className={`carousel-item ${index === 0 ? "active" : ""}`}
                   >
                     <img
-                      src={item.entry[0].images.webp.large_image_url}
+                      src={item.trailer.images.maximum_image_url}
                       className="d-block w-100"
-                      alt={item.entry[0].title}
+                      alt={item.title}
                     />
                     <div className="carousel-caption d-none d-md-block">
                       <h5 className="text-white bg-dark rounded">
-                        {item.entry[0].title}
+                        {item.title}
                       </h5>
                       <p className="text-white bg-dark text-truncate">
-                        {item.content}
+                        {item.synopsis}
                       </p>
                     </div>
                   </div>
