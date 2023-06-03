@@ -1,7 +1,7 @@
 function Carousel({ items }) {
   console.log(items);
 
-  const limitedItems = items.slice(0, 3);
+  const limitedItems = items.slice(0, 5);
   console.log(limitedItems);
 
   return (
@@ -43,6 +43,7 @@ function Carousel({ items }) {
                       <p className="text-white bg-dark text-truncate">
                         {item.synopsis}
                       </p>
+                      <button className="btn btn-dark">Learn More...</button>
                     </div>
                   </div>
                 ))}
