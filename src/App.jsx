@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import Carousel from "./components/Carousel";
 import PopularList from "./components/PopularList";
@@ -19,6 +19,23 @@ function App() {
       refetchOnWindowFocus: false,
     }
   );
+  const {
+    isLoading: searchLoading,
+    isError: searchError,
+    data: searchData,
+    error: searchErrorData,
+    refetch: searchRefetch,
+  } = useQuery(
+    ["data"],
+    async () => {
+      const { data } = await axios(`https://api.jikan.moe/v4/top/anime`);
+      console.log(data);
+      return data;
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
   const popularAnime = data?.data;
 
@@ -26,6 +43,19 @@ function App() {
     <>
       {/* header */}
       <Header />
+      {/* {searchLoading ? (
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      ) : (
+        <div>
+          {searchError ? (
+            <h1>{searchErrorData}</h1>
+          ) : (
+            <Header animes={searchData} refetch={searchRefetch} />
+          )}
+        </div>
+      )} */}
       {/* Carousel */}
       {isLoading ? (
         <div className="spinner-border" role="status">
