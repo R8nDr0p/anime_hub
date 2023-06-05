@@ -1,4 +1,17 @@
-function Header() {
+import React, { useState } from "react";
+
+function Header({ handleSearch }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleSearch(searchTerm);
+  };
+
   return (
     <>
       <nav className="navbar bg-dark">
@@ -6,12 +19,18 @@ function Header() {
           <a className="navbar-brand text-white">
             <h1>Anime Hub</h1>
           </a>
-          <form className="d-flex input-group" role="search">
+          <form
+            onSubmit={handleSubmit}
+            className="d-flex input-group"
+            role="search"
+          >
             <input
               className="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onChange={handleInputChange}
+              value={searchTerm}
             />
             <button
               className="btn btn-outline-primary text-white"
