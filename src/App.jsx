@@ -2,9 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import { useQuery, useQueries } from "@tanstack/react-query";
 import axios from "axios";
-import Carousel from "./components/Carousel";
-import PopularList from "./components/PopularList";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeroHome from "./components/HeroHome";
 
 function App() {
