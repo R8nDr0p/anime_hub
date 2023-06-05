@@ -1,7 +1,9 @@
 function Footer() {
   return (
     <>
-      <div></div>
+      <div>
+        <h1>Anime Hub</h1>
+      </div>
     </>
   );
 }
