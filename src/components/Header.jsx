@@ -4,7 +4,11 @@ function Header({ handleSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+    const value = event.target.value;
+    setSearchTerm(value);
+    if (value === "") {
+      handleSearch("");
+    }
   };
 
   const handleSubmit = (event) => {
