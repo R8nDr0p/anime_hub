@@ -21,7 +21,7 @@ function SearchList({ data }) {
           <div className="col">
             {data.length > 0 &&
               data.map((item) => {
-                return <Card item={item} />;
+                return <Card key={item.mal_id} item={item} />;
               })}
           </div>
         </div>
