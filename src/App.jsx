@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeroHome from "./components/HeroHome";
 import SearchList from "./components/SearchList";
 import React, { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [searchItem, setSearchItem] = useState();
@@ -34,6 +35,9 @@ function App() {
   } = useQuery(
     ["data", searchItem],
     async () => {
+      if (searchItem.trim() === "") {
+        return {};
+      }
       const { data } = await axios(
         `https://api.jikan.moe/v4/anime?q=${searchItem}&sfw`
       );
@@ -52,20 +56,8 @@ function App() {
     <>
       {/* header */}
       <Header handleSearch={handleSearch} />
+
       <SearchList data={searchedItems} />
-      {/* {searchLoading ? (
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : (
-        <div>
-          {searchError ? (
-            <h1>{searchErrorData}</h1>
-          ) : (
-            <Header animes={searchData} refetch={searchRefetch} />
-          )}
-        </div>
-      )} */}
       {/* Carousel */}
       {isLoading ? (
         <div className="spinner-border" role="status">
@@ -76,6 +68,7 @@ function App() {
           {isError ? <h1>{error}</h1> : <HeroHome items={popularAnime} />}
         </div>
       )}
+      <Footer />
     </>
   );
 }
