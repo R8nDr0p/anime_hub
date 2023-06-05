@@ -57,7 +57,7 @@ function App() {
       {/* header */}
       <Header handleSearch={handleSearch} />
 
-      <SearchList data={searchedItems} />
+      <SearchList data={searchedItems} searchLoading={searchLoading} />
       {/* Carousel */}
       {isLoading ? (
         <div className="spinner-border" role="status">

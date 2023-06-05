@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-function SearchList({ data }) {
+function SearchList({ data, searchLoading }) {
   console.log(data);
   if (!data) {
     return null;
@@ -19,10 +19,16 @@ function SearchList({ data }) {
         </div>
         <div className="row">
           <div className="col">
-            {data.length > 0 &&
+            {searchLoading ? (
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            ) : (
+              data.length > 0 &&
               data.map((item) => {
                 return <Card key={item.mal_id} item={item} />;
-              })}
+              })
+            )}
           </div>
         </div>
       </div>
