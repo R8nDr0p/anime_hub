@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { HiOutlineHomeModern } from "react-icons/hi2";
+import { FcAbout } from "react-icons/fc";
 
 function Header({ handleSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -51,6 +52,7 @@ function Header({ handleSearch }) {
               </li>
               <li className="nav-item">
                 <Link to={"/about"} className="nav-link">
+                  <FcAbout />
                   About
                 </Link>
               </li>
