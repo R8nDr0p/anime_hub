@@ -4,8 +4,17 @@ import { useQuery, useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeroHome from "./components/HeroHome";
+import SearchList from "./components/SearchList";
+import React, { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
+  const [searchItem, setSearchItem] = useState();
+
+  const handleSearch = (term) => {
+    setSearchItem(term);
+  };
+
   const { isLoading, isError, data, error, refetch } = useQuery(
     ["data"],
     async () => {
@@ -24,9 +33,14 @@ function App() {
     error: searchErrorData,
     refetch: searchRefetch,
   } = useQuery(
-    ["data"],
+    ["data", searchItem],
     async () => {
-      const { data } = await axios(`https://api.jikan.moe/v4/top/anime`);
+      if (searchItem.trim() === "") {
+        return {};
+      }
+      const { data } = await axios(
+        `https://api.jikan.moe/v4/anime?q=${searchItem}&sfw`
+      );
       console.log(data);
       return data;
     },
@@ -35,25 +49,15 @@ function App() {
     }
   );
 
+  const searchedItems = searchData?.data;
   const popularAnime = data?.data;
 
   return (
     <>
       {/* header */}
-      <Header />
-      {/* {searchLoading ? (
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : (
-        <div>
-          {searchError ? (
-            <h1>{searchErrorData}</h1>
-          ) : (
-            <Header animes={searchData} refetch={searchRefetch} />
-          )}
-        </div>
-      )} */}
+      <Header handleSearch={handleSearch} />
+
+      <SearchList data={searchedItems} searchLoading={searchLoading} />
       {/* Carousel */}
       {isLoading ? (
         <div className="spinner-border" role="status">
@@ -64,6 +68,7 @@ function App() {
           {isError ? <h1>{error}</h1> : <HeroHome items={popularAnime} />}
         </div>
       )}
+      <Footer />
     </>
   );
 }

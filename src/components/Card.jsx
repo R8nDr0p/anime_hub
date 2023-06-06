@@ -7,7 +7,7 @@ function Card({ item }) {
       <div className="cols mt-4 text-center">
         <div
           className="card text-bg-dark"
-          style={{ width: "20rem", height: "36rem" }}
+          style={{ width: "20rem", height: "40rem" }}
         >
           <img
             style={{ height: "25rem" }}
@@ -18,6 +18,7 @@ function Card({ item }) {
           <div className="card-body">
             <h5 className="card-title">{item.title}</h5>
             <p className="card-text text-truncate">{item.synopsis}</p>
+            <p className="card-text">Aired: {item.aired.string}</p>
             <a
               href="#"
               className="btn"
