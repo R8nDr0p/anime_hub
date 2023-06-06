@@ -11,6 +11,7 @@ function Header({ handleSearch }) {
     setSearchTerm(value);
     if (value === "") {
       handleSearch("");
+      navigate("/");
     }
   };
 
@@ -21,55 +22,6 @@ function Header({ handleSearch }) {
   };
 
   return (
-    // <>
-    //   <nav className="navbar bg-dark">
-    //     <div className="container-fluid">
-    //       <Link to={"/"} className="navbar-brand text-white">
-    //         <p>Anime Hub</p>
-    //       </Link>
-    //       <button
-    //         className="navbar-toggler"
-    //         type="button"
-    //         data-bs-toggle="collapse"
-    //         data-bs-target="#navbarSupportedContent"
-    //         aria-expanded="false"
-    //         aria-label="Toggle navigation"
-    //         style={{ border: "none", color: "#fff" }}
-    //       >
-    //         <span className="navbar-toggler-icon"></span>
-    //       </button>
-    //       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    //         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-    //           <li className="nav-item">
-    //             <NavLink to={"/about"} className="nav-link text-white">
-    //               About
-    //             </NavLink>
-    //           </li>
-    //         </ul>
-    //         <form
-    //           onSubmit={handleSubmit}
-    //           className="d-flex input-group"
-    //           role="search"
-    //         >
-    //           <input
-    //             className="form-control me-2"
-    //             type="search"
-    //             placeholder="Search"
-    //             aria-label="Search"
-    //             onChange={handleInputChange}
-    //             value={searchTerm}
-    //           />
-    //           <button
-    //             className="btn btn-outline-primary text-white"
-    //             type="submit"
-    //           >
-    //             Search
-    //           </button>
-    //         </form>
-    //       </div>
-    //     </div>
-    //   </nav>
-    // </>
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
