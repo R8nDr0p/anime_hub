@@ -9,14 +9,20 @@ import React, { useState } from "react";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import About from "./components/About";
+import InfoPage from "./components/InfoPage";
 
 function App() {
   const [searchItem, setSearchItem] = useState();
+  const [infoId, setInfoId] = useState("");
 
   const handleSearch = (term) => {
     setSearchItem(term);
   };
 
+  const handleID = (id) => {
+    setInfoId(id);
+  };
+  // api fetch for popular or top anime
   const { isLoading, isError, data, error, refetch } = useQuery(
     ["data"],
     async () => {
@@ -28,6 +34,7 @@ function App() {
       refetchOnWindowFocus: false,
     }
   );
+  // fetch api for our search function
   const {
     isLoading: searchLoading,
     isError: searchError,
@@ -50,9 +57,33 @@ function App() {
       refetchOnWindowFocus: false,
     }
   );
+  // fetch api for showing full info based on ID
+  const {
+    isLoading: infoLoading,
+    isError: infoError,
+    data: infoData,
+    error: infoErrorData,
+    refetch: infoRefetch,
+  } = useQuery(
+    ["data", infoId],
+    async () => {
+      if (infoId.trim() === "") {
+        return {};
+      }
+      const { data } = await axios(
+        `https://api.jikan.moe/v4/anime/${infoId}/full`
+      );
+      console.log(data);
+      return data;
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
   const searchedItems = searchData?.data;
   const popularAnime = data?.data;
+  const fullInfoAnime = infoData?.data;
 
   return (
     // <>
@@ -88,7 +119,7 @@ function App() {
                   ) : isError ? (
                     <h1>{error}</h1>
                   ) : (
-                    <HeroHome items={popularAnime} />
+                    <HeroHome items={popularAnime} handleID={handleID} />
                   )}
                 </div>
               }
@@ -109,6 +140,23 @@ function App() {
                       data={searchedItems}
                       searchLoading={searchLoading}
                     />
+                  )}
+                </div>
+              }
+            />
+
+            <Route
+              path="/info-page"
+              element={
+                <div>
+                  {infoLoading ? (
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  ) : infoError ? (
+                    <h1>{infoErrorData}</h1>
+                  ) : (
+                    <InfoPage info={fullInfoAnime} />
                   )}
                 </div>
               }

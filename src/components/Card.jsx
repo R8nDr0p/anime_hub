@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Card({ item }) {
+function Card({ item, handleID }) {
+  const navigate = useNavigate();
+
+  const [currentID, setCurrentID] = useState("");
+
+  const handleClick = () => {
+    // setCurrentID(item.mal_id);
+    handleID(item.mal_id);
+    console.log(handleID);
+    navigate("/info-page");
+  };
+
   console.log(item);
   return (
     <>
@@ -19,13 +32,13 @@ function Card({ item }) {
             <h5 className="card-title">{item.title}</h5>
             <p className="card-text text-truncate">{item.synopsis}</p>
             <p className="card-text">Aired: {item.aired.string}</p>
-            <a
-              href="#"
+            <button
+              onClick={handleClick}
               className="btn"
               style={{ backgroundColor: "darkslateblue", color: "white" }}
             >
               Learn more...
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import Card from "./Card";
 
-function PopularList({ item }) {
-  console.log(item);
+function PopularList({ item, handleID }) {
+  console.log(handleID);
   return (
     <>
       <div style={{ backgroundColor: "#121212" }}>
@@ -13,7 +13,7 @@ function PopularList({ item }) {
           </div>
           <div className="row row-cols-sm-2 row-cols-lg-5">
             {item.map((item) => {
-              return <Card key={item.mal_id} item={item} />;
+              return <Card key={item.mal_id} item={item} handleID={handleID} />;
             })}
           </div>
         </div>
