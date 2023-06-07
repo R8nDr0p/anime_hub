@@ -8,9 +8,7 @@ function Card({ item, handleID }) {
   const [currentID, setCurrentID] = useState("");
 
   const handleClick = () => {
-    // setCurrentID(item.mal_id);
     handleID(item.mal_id);
-    console.log(handleID);
     navigate("/info-page");
   };
 

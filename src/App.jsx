@@ -13,7 +13,7 @@ import InfoPage from "./components/InfoPage";
 
 function App() {
   const [searchItem, setSearchItem] = useState();
-  const [infoId, setInfoId] = useState("");
+  const [infoId, setInfoId] = useState();
 
   const handleSearch = (term) => {
     setSearchItem(term);
@@ -67,7 +67,7 @@ function App() {
   } = useQuery(
     ["data", infoId],
     async () => {
-      if (infoId.trim() === "") {
+      if (infoId === "") {
         return {};
       }
       const { data } = await axios(

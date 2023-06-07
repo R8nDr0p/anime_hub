@@ -37,10 +37,10 @@ function Carousel({ items }) {
                       alt={item.title}
                     />
                     <div className="carousel-caption d-none d-md-block">
-                      <h5 className="text-white bg-dark rounded">
+                      <h3 className="text-white bg-dark rounded d-inline-block p-2">
                         {item.title}
-                      </h5>
-                      <p className="text-white bg-dark text-truncate">
+                      </h3>
+                      <p className="text-white bg-dark text-truncate px-2">
                         {item.synopsis}
                       </p>
                       {/*Button trigger modal*/}
