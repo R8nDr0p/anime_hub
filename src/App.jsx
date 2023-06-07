@@ -80,6 +80,29 @@ function App() {
       refetchOnWindowFocus: false,
     }
   );
+  // fetch characters
+  // const {
+  //   isLoading: characterInfoLoading,
+  //   isError: characterInfoError,
+  //   data: characterInfoData,
+  //   error: characterInfoErrorData,
+  //   refetch: characterInfoRefetch,
+  // } = useQuery(
+  //   ["data", infoId],
+  //   async () => {
+  //     if (infoId === "") {
+  //       return {};
+  //     }
+  //     const { data } = await axios(
+  //       `https://api.jikan.moe/v4/anime/${infoId}/full`
+  //     );
+  //     console.log(data);
+  //     return data;
+  //   },
+  //   {
+  //     refetchOnWindowFocus: false,
+  //   }
+  // );
 
   const searchedItems = searchData?.data;
   const popularAnime = data?.data;
