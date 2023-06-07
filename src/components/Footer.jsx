@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <>
-      <div>
-        <h1>Anime Hub</h1>
-      </div>
+      <Link to={"/"}>
+        <img src="./image.png" alt="" width={"200"} />
+      </Link>
     </>
   );
 }

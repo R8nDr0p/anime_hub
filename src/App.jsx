@@ -42,7 +42,7 @@ function App() {
     error: searchErrorData,
     refetch: searchRefetch,
   } = useQuery(
-    ["data", searchItem],
+    ["searchdata", searchItem],
     async () => {
       if (searchItem.trim() === "") {
         return {};
@@ -54,7 +54,7 @@ function App() {
       return data;
     },
     {
-      refetchOnWindowFocus: false,
+      // refetchOnWindowFocus: false,
     }
   );
   // fetch api for showing full info based on ID
@@ -65,7 +65,7 @@ function App() {
     error: infoErrorData,
     refetch: infoRefetch,
   } = useQuery(
-    ["data", infoId],
+    ["infodata", infoId],
     async () => {
       if (infoId === "") {
         return {};
@@ -77,55 +77,40 @@ function App() {
       return data;
     },
     {
-      refetchOnWindowFocus: false,
+      // refetchOnWindowFocus: false,
     }
   );
   // fetch characters
-  // const {
-  //   isLoading: characterInfoLoading,
-  //   isError: characterInfoError,
-  //   data: characterInfoData,
-  //   error: characterInfoErrorData,
-  //   refetch: characterInfoRefetch,
-  // } = useQuery(
-  //   ["data", infoId],
-  //   async () => {
-  //     if (infoId === "") {
-  //       return {};
-  //     }
-  //     const { data } = await axios(
-  //       `https://api.jikan.moe/v4/anime/${infoId}/full`
-  //     );
-  //     console.log(data);
-  //     return data;
-  //   },
-  //   {
-  //     refetchOnWindowFocus: false,
-  //   }
-  // );
+  const {
+    isLoading: characterInfoLoading,
+    isError: characterInfoError,
+    data: characterInfoData,
+    error: characterInfoErrorData,
+    refetch: characterInfoRefetch,
+  } = useQuery(
+    ["characterdata", infoId],
+    async () => {
+      if (infoId === "") {
+        return {};
+      }
+      const { data } = await axios(
+        `https://api.jikan.moe/v4/anime/${infoId}/characters`
+      );
+      console.log(data);
+      return data;
+    },
+    {
+      // refetchOnWindowFocus: false,
+      enabled: !!infoId,
+    }
+  );
 
   const searchedItems = searchData?.data;
   const popularAnime = data?.data;
   const fullInfoAnime = infoData?.data;
+  const characterInfo = characterInfoData?.data;
 
   return (
-    // <>
-    //   {/* header */}
-    //   <Header handleSearch={handleSearch} />
-
-    //   <SearchList data={searchedItems} searchLoading={searchLoading} />
-    //   {/* Carousel */}
-    //   {isLoading ? (
-    //     <div className="spinner-border" role="status">
-    //       <span className="visually-hidden">Loading...</span>
-    //     </div>
-    //   ) : (
-    //     <div>
-    //       {isError ? <h1>{error}</h1> : <HeroHome items={popularAnime} />}
-    //     </div>
-    //   )}
-    //   <Footer />
-    // </>
     <>
       <BrowserRouter>
         <Routes>
@@ -160,8 +145,10 @@ function App() {
                     <h1>{searchErrorData}</h1>
                   ) : (
                     <SearchList
+                      handleID={handleID}
                       data={searchedItems}
                       searchLoading={searchLoading}
+                      info={fullInfoAnime}
                     />
                   )}
                 </div>
@@ -178,8 +165,16 @@ function App() {
                     </div>
                   ) : infoError ? (
                     <h1>{infoErrorData}</h1>
+                  ) : characterInfoLoading ? (
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
                   ) : (
-                    <InfoPage info={fullInfoAnime} />
+                    <InfoPage
+                      info={fullInfoAnime}
+                      characterInfo={characterInfo}
+                      characterInfoLoading={characterInfoLoading}
+                    />
                   )}
                 </div>
               }

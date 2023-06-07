@@ -1,7 +1,7 @@
 import Card from "./Card";
 
 function PopularList({ item, handleID }) {
-  console.log(handleID);
+  // console.log(handleID);
   return (
     <>
       <div style={{ backgroundColor: "#121212" }}>

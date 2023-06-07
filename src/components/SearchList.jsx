@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-function SearchList({ data, searchLoading }) {
+function SearchList({ data, searchLoading, handleID, info }) {
   console.log(data);
   if (!data) {
     return null;
@@ -25,7 +25,7 @@ function SearchList({ data, searchLoading }) {
           ) : (
             data.length > 0 &&
             data.map((item) => {
-              return <Card key={item.mal_id} item={item} />;
+              return <Card key={item.mal_id} item={item} handleID={handleID} />;
             })
           )}
         </div>

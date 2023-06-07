@@ -5,14 +5,12 @@ import { useNavigate } from "react-router-dom";
 function Card({ item, handleID }) {
   const navigate = useNavigate();
 
-  const [currentID, setCurrentID] = useState("");
-
   const handleClick = () => {
     handleID(item.mal_id);
-    navigate("/info-page");
+    navigate(`/info-page?info=${item.mal_id}`);
   };
 
-  console.log(item);
+  // console.log(item);
   return (
     <>
       <div className="cols mt-4 text-center">

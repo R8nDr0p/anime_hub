@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { HiOutlineHomeModern } from "react-icons/hi2";
-import { FcAbout } from "react-icons/fc";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 function Header({ handleSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,16 +19,19 @@ function Header({ handleSearch }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSearch(searchTerm);
-    navigate("/searchlist");
+    navigate(`/searchlist?search=${searchTerm}`);
   };
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav
+        style={{ backgroundImage: `url(./manga-bg.jpg)` }}
+        className="navbar navbar-expand-lg bg-body-tertiary"
+      >
         <div className="container-fluid">
           <Link to={"/"} className="navbar-brand">
             <span>
-              <h1>Anime Hub</h1>
+              <img src="./image.png" alt="" width={"200"} />
             </span>
           </Link>
           <button
@@ -52,7 +55,7 @@ function Header({ handleSearch }) {
               </li>
               <li className="nav-item">
                 <Link to={"/about"} className="nav-link">
-                  <FcAbout />
+                  <AiOutlineInfoCircle />
                   About
                 </Link>
               </li>
@@ -63,10 +66,10 @@ function Header({ handleSearch }) {
                 value={searchTerm}
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Find anime"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-danger" type="submit">
                 Search
               </button>
             </form>
