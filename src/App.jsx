@@ -14,6 +14,7 @@ import InfoPage from "./components/InfoPage";
 function App() {
   const [searchItem, setSearchItem] = useState();
   const [infoId, setInfoId] = useState();
+  const [selectedFilter, setSelectedFilter] = useState("upcoming");
 
   const handleSearch = (term) => {
     setSearchItem(term);
@@ -21,6 +22,11 @@ function App() {
 
   const handleID = (id) => {
     setInfoId(id);
+  };
+
+  const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
+    console.log(filter);
   };
   // api fetch for popular or top anime
   const { isLoading, isError, data, error, refetch } = useQuery(
@@ -104,11 +110,35 @@ function App() {
       enabled: !!infoId,
     }
   );
+  // fetch api for filtered list
+  const {
+    isLoading: filterInfoLoading,
+    isError: filterInfoError,
+    data: filterInfoData,
+    error: filterInfoErrorData,
+    refetch: filterInfoRefetch,
+  } = useQuery(
+    ["filterdata", selectedFilter],
+    async () => {
+      if (infoId === "") {
+        return {};
+      }
+      const { data } = await axios(
+        `https://api.jikan.moe/v4/top/anime?filter=${selectedFilter}`
+      );
+      console.log(data);
+      return data;
+    },
+    {
+      // refetchOnWindowFocus: false,
+    }
+  );
 
   const searchedItems = searchData?.data;
   const popularAnime = data?.data;
   const fullInfoAnime = infoData?.data;
   const characterInfo = characterInfoData?.data;
+  const filterInfo = filterInfoData?.data;
 
   return (
     <>
@@ -119,17 +149,15 @@ function App() {
             <Route
               index
               element={
-                <div>
-                  {isLoading ? (
-                    <div className="spinner-border" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </div>
-                  ) : isError ? (
-                    <h1>{error}</h1>
-                  ) : (
-                    <HeroHome items={popularAnime} handleID={handleID} />
-                  )}
-                </div>
+                <HeroHome
+                  items={popularAnime}
+                  handleID={handleID}
+                  handleFilterChange={handleFilterChange}
+                  filterInfoData={filterInfo}
+                  filterName={selectedFilter}
+                  isLoading={filterInfoLoading}
+                  isError={filterInfoError}
+                />
               }
             />
 
