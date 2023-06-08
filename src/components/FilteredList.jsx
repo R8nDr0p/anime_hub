@@ -4,7 +4,7 @@ function FilteredList({ filterInfoData, handleID, isLoading, isError }) {
   console.log(filterInfoData);
 
   return (
-    <div className="bg-dark">
+    <div style={{ backgroundColor: "#121212" }}>
       <div className="container">
         <div className="row">
           <div className="col">
