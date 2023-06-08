@@ -1,5 +1,24 @@
-function Slogan() {
-  const choices = ["Popular", "Upcoming", "Airing", "Favorite"];
+import React, { useState } from "react";
+
+function Slogan({ handleFilterChange }) {
+  const choices = ["popular", "upcoming", "airing", "favorite"];
+  const stateValues = {
+    popular: "bypopularity",
+    upcoming: "upcoming",
+    airing: "airing",
+    favorite: "favorite",
+  };
+  const [selectedChoice, setSelectedChoice] = useState("upcoming");
+  const [selectedStateValue, setSelectedStateValue] = useState(
+    stateValues[selectedChoice]
+  );
+  const handleChoiceChange = (event) => {
+    const choice = event.target.value;
+    setSelectedChoice(choice);
+    setSelectedStateValue(stateValues[choice]);
+    handleFilterChange(stateValues[choice]);
+    console.log(stateValues[choice]);
+  };
 
   return (
     <>
@@ -10,7 +29,7 @@ function Slogan() {
         <div className="row">
           <div className="col p-0">
             <h1
-              className="text-center mb-0"
+              className="text-center mb-0 fw-bold"
               style={{
                 fontFamily: "Comic Neue, cursive",
               }}
@@ -21,48 +40,34 @@ function Slogan() {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col d-flex justify-content-center">
             <div
               class="btn-group"
               role="group"
               aria-label="Basic radio toggle button group"
             >
               {choices.map((choice, index) => {
-                <React.fragment></React.fragment>;
+                return (
+                  <React.Fragment>
+                    <input
+                      type="radio"
+                      className="btn-check"
+                      name="btnradio"
+                      id={`btnradio${index + 1}`}
+                      value={choice}
+                      checked={selectedChoice === choice}
+                      onChange={handleChoiceChange}
+                      autocomplete="off"
+                    />
+                    <label
+                      className="btn btn-outline-dark"
+                      htmlFor={`btnradio${index + 1}`}
+                    >
+                      {choice.charAt(0).toUpperCase() + choice.slice(1)}
+                    </label>
+                  </React.Fragment>
+                );
               })}
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio"
-                id="btnradio1"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-dark" for="btnradio1">
-                Popular
-              </label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio"
-                id="btnradio2"
-                autocomplete="off"
-                defaultChecked
-              />
-              <label class="btn btn-outline-dark" for="btnradio2">
-                Upcoming
-              </label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio"
-                id="btnradio3"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-dark" for="btnradio3">
-                Airing
-              </label>
             </div>
           </div>
         </div>
