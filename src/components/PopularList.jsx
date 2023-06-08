@@ -13,7 +13,7 @@ function PopularList({ item, handleID }) {
           </div>
           <div className="row row-cols-sm-2 row-cols-lg-5">
             {item.map((item) => {
-              return <Card key={item.mal_id} item={item} handleID={handleID} />; // Pass handleID here
+              return <Card key={item.mal_id} item={item} handleID={handleID} />;
             })}
           </div>
         </div>
