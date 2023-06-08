@@ -12,18 +12,18 @@ function Footer() {
               <img src="./image.png" alt="" width={"290rem"} />
             </Link>
           </div>
-          <div className="col p-0">
+          <div className="col p-0 bg-white">
             <h3>Follow us</h3>
             <ul>
               <li style={{ listStyle: "none" }}>
                 <a href="#" className="fs-5">
-                  <AiOutlineFacebook />
+                  <img src="./icons8-facebook.gif" alt="" />
                   Facebook
                 </a>
               </li>
               <li style={{ listStyle: "none" }}>
                 <a href="#">
-                  <BsInstagram />
+                  <img src="./icons8-instagram.gif" alt="" />
                   Instagram
                 </a>
               </li>
