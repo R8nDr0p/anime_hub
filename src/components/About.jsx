@@ -54,7 +54,7 @@ function About() {
                   <li>PHP?</li>
                 </ul>
                 <a
-                  href="https://github.com/R8nDr0p"
+                  href="https://github.com/DonSal28"
                   className="btn btn-primary"
                 >
                   <BsGithub />
