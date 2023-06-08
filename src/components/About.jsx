@@ -6,15 +6,9 @@ import { BsGithub } from "react-icons/bs";
 
 function About() {
   return (
-    <>
-      {/* <img src={Rainimage} alt="" width={}/>
-      <h1>Rain Seguban</h1>
-      <h4>Half-stack Developer</h4>
-      <hr />
-      <h1>Donald Saldo</h1>
-      <h4>Half-stack Developer</h4> */}
+    <div className="bg-dark">
       <div className="container">
-        <div className="row">
+        <div className="row p-5">
           <div className="col">
             <div className="card" style={{ width: "18rem" }}>
               <img src={Rainimage} className="card-img-top" alt="..." />
@@ -67,7 +61,7 @@ function About() {
             <div className="card" style={{ width: "18rem" }}>
               <img src={Marjpic} className="card-img-top" alt="..." />
               <div className="card-body">
-                <h5 className="card-title">Donald Saldo</h5>
+                <h5 className="card-title">Marjorie Mandahinog</h5>
                 <p className="card-text">Less than Half-Stack Developer</p>
                 <ul>
                   <li>HTML</li>
@@ -91,7 +85,7 @@ function About() {
             <div className="card" style={{ width: "18rem" }}>
               <img src={Leepic} className="card-img-top" alt="..." />
               <div className="card-body">
-                <h5 className="card-title">Donald Saldo</h5>
+                <h5 className="card-title">Lee Wendell Saludaga</h5>
                 <p className="card-text">Less than Half-Stack Developer</p>
                 <ul>
                   <li>HTML</li>
@@ -149,7 +143,7 @@ function About() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -14,8 +14,11 @@ function FilteredList({ filterInfoData, handleID, isLoading, isError }) {
         </div>
         <div className="row row-cols-sm-2 row-cols-lg-3">
           {isLoading ? (
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
+            <div>
+              <img
+                src="https://cdn.mos.cms.futurecdn.net/aetVnhHUsWWtPxZ2E5TKMg.gif"
+                alt=""
+              />
             </div>
           ) : isError ? (
             <h1>{isError}</h1>

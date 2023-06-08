@@ -1,3 +1,6 @@
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 function InfoPage({ info, characterInfo, characterInfoLoading }) {
   console.log(info);
   console.log(characterInfo);
@@ -19,7 +22,7 @@ function InfoPage({ info, characterInfo, characterInfoLoading }) {
         style={{ backgroundImage: `url(./manga-bg-1.webp)` }}
       >
         <div className="row">
-          <div className="col">
+          <div className="col" data-aos="fade-right" data-aos-duration="3000">
             <h1 className="text-bg-dark d-inline-block p-3 rounded">
               {info.title}
             </h1>
@@ -29,15 +32,19 @@ function InfoPage({ info, characterInfo, characterInfoLoading }) {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col" data-aos="fade-top" data-aos-duration="3000">
             <p className="text-bg-dark rounded p-3">{info.synopsis}</p>
           </div>
         </div>
         <div className="row row-cols-sm-1 row-cols-lg-2">
-          <div className="col">
+          <div className="col" data-aos="flip-right" data-aos-duration="3000">
             <img src={info.images.jpg.large_image_url} alt="" />
           </div>
-          <div className="col text-bg-dark rounded mt-3">
+          <div
+            className="col text-bg-dark rounded mt-3"
+            data-aos="flip-left"
+            data-aos-duration="3000"
+          >
             {/* <h1>{info.title}</h1>
             <p>{info.title_japanese}</p> */}
             <p style={{ color: "red" }}>Aired: {info.aired.string}</p>

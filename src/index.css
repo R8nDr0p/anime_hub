@@ -62,7 +62,7 @@
   }
 
   .btn-custom {
-    background-color: rgb(15, 14, 14);
+    background-color: rgb(3, 3, 3);
     color: rgb(255, 255, 255);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border-radius: 15px;

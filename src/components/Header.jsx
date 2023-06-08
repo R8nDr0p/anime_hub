@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { HiOutlineHomeModern } from "react-icons/hi2";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { BsSearch } from "react-icons/bs";
 
 function Header({ handleSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -47,7 +48,7 @@ function Header({ handleSearch }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item fs-5">
                 <NavLink
                   to={"/"}
                   className="nav-link fw-bold"
@@ -57,7 +58,7 @@ function Header({ handleSearch }) {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item fw-bold">
+              <li className="nav-item fw-bold fs-5">
                 <NavLink to={"/about"} className="nav-link">
                   <AiOutlineInfoCircle />
                   About
@@ -74,7 +75,7 @@ function Header({ handleSearch }) {
                 aria-label="Search"
               />
               <button className="btn btn-danger" type="submit">
-                Search
+                <BsSearch />
               </button>
             </form>
           </div>

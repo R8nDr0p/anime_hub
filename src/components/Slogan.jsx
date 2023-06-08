@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Slogan({ handleFilterChange }) {
   const choices = ["popular", "upcoming", "airing", "favorite"];
@@ -26,12 +28,13 @@ function Slogan({ handleFilterChange }) {
         className="container-fluid"
         style={{ backgroundImage: "url(./rumbling.webp)" }}
       >
-        <div className="row">
+        <div className="row" data-aos="zoom-out-down">
           <div className="col p-0">
             <h1
-              className="text-center mb-0 fw-bold"
+              className="text-center mb-0 fw-bold mb-5"
               style={{
                 fontFamily: "Comic Neue, cursive",
+                fontSize: "5rem",
               }}
             >
               "Where Anime Dreams Come to Life: <br /> Your Ultimate Destination
@@ -39,7 +42,7 @@ function Slogan({ handleFilterChange }) {
             </h1>
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-5">
           <div className="col d-flex justify-content-center">
             <div
               class="btn-group"
@@ -60,7 +63,7 @@ function Slogan({ handleFilterChange }) {
                       autocomplete="off"
                     />
                     <label
-                      className="btn btn-outline-dark"
+                      className="btn btn-dark mb-2"
                       htmlFor={`btnradio${index + 1}`}
                     >
                       {choice.charAt(0).toUpperCase() + choice.slice(1)}
