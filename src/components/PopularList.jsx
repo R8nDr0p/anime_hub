@@ -4,7 +4,7 @@ function PopularList({ item, handleID }) {
   // console.log(handleID);
   return (
     <>
-      <div style={{ backgroundColor: "#121212" }}>
+      <div style={{ backgroundColor: "#121212" }} className="pt-3">
         <div className="container-fluid">
           <div className="row">
             <div className="col">

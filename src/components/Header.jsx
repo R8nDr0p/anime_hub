@@ -48,16 +48,20 @@ function Header({ handleSearch }) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to={"/"} className="nav-link" aria-current="page">
+                <NavLink
+                  to={"/"}
+                  className="nav-link fw-bold"
+                  aria-current="page"
+                >
                   <HiOutlineHomeModern />
                   Home
-                </Link>
+                </NavLink>
               </li>
-              <li className="nav-item">
-                <Link to={"/about"} className="nav-link">
+              <li className="nav-item fw-bold">
+                <NavLink to={"/about"} className="nav-link">
                   <AiOutlineInfoCircle />
                   About
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <form onSubmit={handleSubmit} className="d-flex" role="search">

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Card({ item, handleID }) {
   const navigate = useNavigate();
@@ -10,10 +12,17 @@ function Card({ item, handleID }) {
     navigate(`/info-page?info=${item.mal_id}`);
   };
 
+  useEffect(() => {
+    Aos.init();
+  }, []);
   // console.log(item);
   return (
     <>
-      <div className="cols mt-4 text-center">
+      <div
+        className="cols mt-4 text-center"
+        data-aos="fade-up-right"
+        data-aos-duration="3000"
+      >
         <div
           className="card text-bg-dark"
           style={{ width: "20rem", height: "40rem" }}
@@ -28,11 +37,7 @@ function Card({ item, handleID }) {
             <h5 className="card-title">{item.title}</h5>
             <p className="card-text text-truncate">{item.synopsis}</p>
             <p className="card-text">Aired: {item.aired.string}</p>
-            <button
-              onClick={handleClick}
-              className="btn"
-              style={{ backgroundColor: "darkslateblue", color: "white" }}
-            >
+            <button onClick={handleClick} className=" btn-custom">
               Learn more...
             </button>
           </div>
