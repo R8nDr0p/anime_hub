@@ -15,19 +15,23 @@ function Footer() {
           <div className="col p-0">
             <h3>Follow us</h3>
             <ul>
-              <li>
+              <li style={{ listStyle: "none" }}>
                 <a href="#" className="fs-5">
                   <AiOutlineFacebook />
                   Facebook
                 </a>
               </li>
-              <li>
+              <li style={{ listStyle: "none" }}>
                 <a href="#">
                   <BsInstagram />
                   Instagram
                 </a>
               </li>
             </ul>
+          </div>
+          <div className="col">
+            <h1>Project 2 </h1>
+            <h4> by The Redeem Team</h4>
           </div>
         </div>
       </div>
