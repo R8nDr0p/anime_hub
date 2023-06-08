@@ -73,7 +73,7 @@ function Header({ handleSearch }) {
                 placeholder="Find anime"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-danger" type="submit">
+              <button className="btn btn-danger" type="submit">
                 Search
               </button>
             </form>
