@@ -1,12 +1,10 @@
 import "./App.css";
-import Header from "./components/Header";
 import { useQuery, useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeroHome from "./components/HeroHome";
 import SearchList from "./components/SearchList";
 import React, { useState } from "react";
-import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import About from "./components/About";
 import InfoPage from "./components/InfoPage";
