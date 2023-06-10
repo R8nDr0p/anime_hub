@@ -64,6 +64,7 @@ function App() {
     }
   );
   // fetch api for showing full info based on ID
+
   const {
     isLoading: infoLoading,
     isError: infoError,

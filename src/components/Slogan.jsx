@@ -51,7 +51,7 @@ function Slogan({ handleFilterChange }) {
             >
               {choices.map((choice, index) => {
                 return (
-                  <React.Fragment>
+                  <React.Fragment key={index}>
                     <input
                       type="radio"
                       className="btn-check"
@@ -60,7 +60,7 @@ function Slogan({ handleFilterChange }) {
                       value={choice}
                       checked={selectedChoice === choice}
                       onChange={handleChoiceChange}
-                      autocomplete="off"
+                      s="off"
                     />
                     <label
                       className="btn btn-dark mb-2"

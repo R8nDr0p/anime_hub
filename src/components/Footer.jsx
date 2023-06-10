@@ -41,10 +41,10 @@ function Footer() {
     //     </div>
     //   </div>
     // </div>
-    <footer class="bg-dark text-light">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-4">
+    <footer className="bg-dark text-light">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-4">
             <h4>About Us</h4>
             <p>
               We are a passionate team of anime enthusiasts dedicated to
@@ -59,14 +59,14 @@ function Footer() {
               with fellow anime lovers.
             </p>
           </div>
-          <div class="col-md-4">
+          <div className="col-md-4">
             <h4>Contact Us</h4>
             <p>Email: info@example.com</p>
             <p>Phone: +1 123-456-7890</p>
           </div>
-          <div class="col-md-4">
+          <div className="col-md-4">
             <h4>Follow Us</h4>
-            <div class="social-media">
+            <div className="social-media">
               <a href="#">
                 <img src="./facebook-50.png" alt="" />
               </a>
@@ -77,9 +77,9 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col text-center">
+      <div className="container">
+        <div className="row">
+          <div className="col text-center">
             <p>&copy; 2023 Anime-Hub. All rights reserved.</p>
           </div>
         </div>
